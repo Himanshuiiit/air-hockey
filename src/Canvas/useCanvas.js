@@ -1,19 +1,21 @@
 import { useRef, useEffect } from 'react'
 
-const useCanvas = draw => {
+const useCanvas = init => {
   
   const ref = useRef(null)
   
   useEffect(() => {
-    
     const canvas = ref.current
     const context = canvas.getContext('2d')
-    let count = 0
+    addEventListener("resize", () => {
+      canvas.width = window.innerWidth - 5;
+      canvas.height = window.innerHeight - 5;
+      init(context);
+    });
     let animationId
     
     const renderer = () => {
-      count++
-      draw(context, count)
+      init(context)
       animationId = window.requestAnimationFrame(renderer)
     }
     renderer()
@@ -21,7 +23,7 @@ const useCanvas = draw => {
     return () => {
       window.cancelAnimationFrame(animationId)
     }
-  }, [draw])
+  }, [init])
   
   return ref
 }
