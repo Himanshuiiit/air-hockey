@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: sans-serif;
+  background: #dedede;
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+.button {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: x-large;
+  font-weight: 700;
+  color: white;
+  margin: 1rem;
+}
+
+.create {
+  background-color: green;
+}
+
+.join {
+  background-color: orangered;
+}
